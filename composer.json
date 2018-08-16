@@ -1,6 +1,6 @@
 {
     "name": "chonla/instagram-scraper",
-    "version": "0.1.0",
+    "version": "0.1.2",
     "description": "Web-scraper for getting public media by tag from Instagram.",
     "license": "MIT",
     "authors": [{

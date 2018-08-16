@@ -2,11 +2,14 @@
     "name": "chonla/instagram-scraper",
     "description": "Web-scraper for get public media by tag from Instagram.",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Chonlasith Jucksriporn",
-            "email": "chonlasith@gmail.com"
+    "authors": [{
+        "name": "Chonlasith Jucksriporn",
+        "email": "chonlasith@gmail.com"
+    }],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "InstagramScraper\\": "src/"
         }
-    ],
-    "require": {}
+    }
 }

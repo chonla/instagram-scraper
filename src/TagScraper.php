@@ -12,7 +12,6 @@ class TagScraper extends Scraper {
     private $tags;
 
     function __construct() {
-        parent::__construct('https://www.instagram.com');
     }
 
     public function scrape(string $tag, int $flag = TagScraper::IMAGES) {

@@ -7,12 +7,8 @@ namespace InstagramScraper;
 class Scraper {
     private $baseUrl;
 
-    function __construct(string $base) {
-        $this->baseUrl = $base;
-    }
-
-    protected function scrapeFile(string $file) {
-        return file_get_contents($file);
+    function __construct() {
+        $this->baseUrl = 'https://www.instagram.com';
     }
 
     protected function scrape(string $uri) {

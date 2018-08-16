@@ -12,6 +12,7 @@ class TagScraper extends Scraper {
     private $tags;
 
     function __construct() {
+        parent::__construct();
     }
 
     public function scrape(string $tag, int $flag = TagScraper::IMAGES) {

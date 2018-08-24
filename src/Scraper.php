@@ -11,7 +11,7 @@ class Scraper {
         $this->baseUrl = 'https://www.instagram.com';
     }
 
-    protected function scrape(string $uri) {
+    public function scrape(string $uri) {
         $url = sprintf("%s%s", $this->baseUrl, $uri);
 
         $c = curl_init($url);

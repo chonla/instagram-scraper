@@ -4,20 +4,26 @@ declare(strict_types=1);
 
 namespace InstagramScraper;
 
-class TagScraper extends Scraper {
+use InstagramScraper\Scraper;
+
+class TagScraper {
     const IMAGES = 1;
     const VIDEOS = 2;
     const ALL = TagScraper::IMAGES | TagScraper::VIDEOS;
 
+    private $scraper;
     private $tags;
 
-    function __construct() {
-        parent::__construct();
+    function __construct(Scraper $scraper = NULL) {
+        if ($scraper === NULL) {
+            $scraper = new Scraper;
+        }
+        $this->scraper = $scraper;
     }
 
     public function scrape(string $tag, int $flag = TagScraper::IMAGES) {
         $uri = sprintf('/explore/tags/%s/', $tag);
-        $content = parent::scrape($uri);
+        $content = $this->scraper->scrape($uri);
         $tags = $this->parse($content);
 
         if ($flag === TagScraper::VIDEOS) {

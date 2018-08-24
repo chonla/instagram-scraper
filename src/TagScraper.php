@@ -40,13 +40,16 @@ class TagScraper extends Scraper {
     public function parse(string $content) {
         $tags = [];
         if (preg_match('/window\._sharedData\s*=\s*([^;]+)/', $content, $matches)) {
-
             // Find proper semicolon
             $sharedData = $matches[1];
             $pos = mb_strpos($content, $sharedData);
             while ($data = json_decode($sharedData, true) === NULL) {
                 $semiPos = mb_strpos($content, ';', $pos + mb_strlen($sharedData) + 1);
-                $sharedData = mb_substr($content, $pos, $semiPos - $pos);
+                if ($semiPos === FALSE) {
+                    $sharedData = mb_substr($content, $pos);
+                } else {
+                    $sharedData = mb_substr($content, $pos, $semiPos - $pos);
+                }
             }
             $data = json_decode($sharedData, true);
             $tags = array_map(function($o) {

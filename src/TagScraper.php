@@ -58,6 +58,8 @@ class TagScraper {
                 }
             }
             $data = json_decode($sharedData, true);
+            $el = $data['entry_data']['TagPage'][0]['graphql']['hashtag']['edge_hashtag_to_media']['edges'];
+
             $tags = array_map(function($o) {
                 return [
                     'display_url' => $o['node']['display_url'],
@@ -69,7 +71,7 @@ class TagScraper {
                     'caption' => $o['node']['edge_media_to_caption']['edges'][0]['node']['text'],
                     'is_video' => $o['node']['is_video'],
                 ];
-            }, $data['entry_data']['TagPage'][0]['graphql']['hashtag']['edge_hashtag_to_media']['edges']);
+            }, $el);
         }
         return $tags;
     }

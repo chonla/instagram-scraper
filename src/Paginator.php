@@ -20,6 +20,10 @@ class Paginator
         return $this->pageSize;
     }
 
+    public function set_page_size($size) {
+        $this->pageSize = $size;
+    }
+
     public function page($page, $items)
     {
         if ($page <= 0) {

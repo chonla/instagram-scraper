@@ -41,6 +41,14 @@ class FeedResult
         return $this->filter(FeedResult::IMAGES);
     }
 
+    public function set_page_size($size) {
+        $this->paginator->set_page_size($size);
+    }
+
+    public function page_size() {
+        return $this->paginator->page_size();
+    }
+
     private function videos_only($object)
     {
         return $object['is_video'];

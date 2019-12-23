@@ -8,6 +8,7 @@
         "email": "chonlasith@gmail.com"
     }],
     "scripts": {
+        "release": "composer update",
         "test": "phpdbg -qrr vendor/bin/phpunit"
     },
     "require": {

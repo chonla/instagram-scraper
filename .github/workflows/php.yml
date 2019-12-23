@@ -9,8 +9,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+
+    - name: Setup PHP, with composer and extensions
+      uses: shivammathur/setup-php@v1 #https://github.com/shivammathur/setup-php
       with:
-        php-version: '7.4'
+        php-version: 7.4
+        extensions: mbstring, simplexml, dom
+        coverage: xdebug #optional
 
     - name: Update composer
       run: composer update

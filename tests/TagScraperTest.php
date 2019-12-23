@@ -680,9 +680,9 @@ class TagScraperTest extends TestCase {
              ->will($this->returnValue($content));
 
         $scraper = new TagScraper($mock);
-        $tags = $scraper->scrape('snail', TagScraper::VIDEOS);
+        $result = $scraper->scrape('snail');
 
-        $this->assertEquals(2, count($tags));
+        $this->assertEquals(2, $result->videos()->count());
     }
 
     public function testFilterImage() {
@@ -697,8 +697,8 @@ class TagScraperTest extends TestCase {
              ->will($this->returnValue($content));
 
         $scraper = new TagScraper($mockScraper);
-        $tags = $scraper->scrape('snail', TagScraper::IMAGES);
+        $result = $scraper->scrape('snail');
 
-        $this->assertEquals(3, count($tags));
+        $this->assertEquals(3, $result->images()->count());
     }
 }

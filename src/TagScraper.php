@@ -7,10 +7,6 @@ namespace InstagramScraper;
 use InstagramScraper\Scraper;
 
 class TagScraper {
-    const IMAGES = 1;
-    const VIDEOS = 2;
-    const ALL = TagScraper::IMAGES | TagScraper::VIDEOS;
-
     private $scraper;
     private $tags;
 
@@ -21,26 +17,12 @@ class TagScraper {
         $this->scraper = $scraper;
     }
 
-    public function scrape(string $tag, int $flag = TagScraper::IMAGES) {
+    public function scrape(string $tag): FeedResult {
         $uri = sprintf('/explore/tags/%s/', $tag);
         $content = $this->scraper->scrape($uri);
         $tags = $this->parse($content);
 
-        if ($flag === TagScraper::VIDEOS) {
-            $tags = array_filter($tags, [$this, 'videos_only']);
-        } elseif ($flag === TagScraper::IMAGES) {
-            $tags = array_filter($tags, [$this, 'images_only']);
-        }
-
-        return $tags;
-    }
-
-    private function videos_only($object) {
-        return $object['is_video'];
-    }
-
-    private function images_only($object) {
-        return !$object['is_video'];
+        return new FeedResult($tags);
     }
 
     public function parse(string $content) {

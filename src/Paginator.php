@@ -4,20 +4,24 @@ declare(strict_types=1);
 
 namespace InstagramScraper;
 
-class Paginator {
+class Paginator
+{
     const DEFAULT_PAGE_SIZE = 10;
 
     private $pageSize;
 
-    function __construct($pageSize = Paginator::DEFAULT_PAGE_SIZE) {
+    function __construct($pageSize = Paginator::DEFAULT_PAGE_SIZE)
+    {
         $this->pageSize = $pageSize;
     }
 
-    public function page_size() {
+    public function page_size()
+    {
         return $this->pageSize;
     }
 
-    public function page($page, $items) {
+    public function page($page, $items)
+    {
         if ($page <= 0) {
             return [];
         }

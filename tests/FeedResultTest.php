@@ -3,6 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 use InstagramScraper\FeedResult;
+use InstagramScraper\Paginator;
 
 class FeedResultTest extends TestCase
 {
@@ -87,6 +88,42 @@ class FeedResultTest extends TestCase
         ];
 
         $result = $fresult->videos()->toArray();
+
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testPaginatedResult()
+    {
+        $fresult = new FeedResult([
+            [
+                'id' => 1,
+                'is_video' => true
+            ],
+            [
+                'id' => 2,
+                'is_video' => true
+            ],
+            [
+                'id' => 3,
+                'is_video' => false
+            ],
+            [
+                'id' => 4,
+                'is_video' => true
+            ]
+        ], new Paginator(2));
+        $expected = [
+            [
+                'id' => 3,
+                'is_video' => false
+            ],
+            [
+                'id' => 4,
+                'is_video' => true
+            ]
+        ];
+
+        $result = $fresult->page(2);
 
         $this->assertEquals($expected, $result);
     }

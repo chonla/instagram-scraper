@@ -6,18 +6,21 @@ namespace InstagramScraper;
 
 use InstagramScraper\Scraper;
 
-class TagScraper {
+class TagScraper
+{
     private $scraper;
     private $tags;
 
-    function __construct(Scraper $scraper = NULL) {
+    function __construct(Scraper $scraper = NULL)
+    {
         if ($scraper === NULL) {
             $scraper = new Scraper;
         }
         $this->scraper = $scraper;
     }
 
-    public function scrape(string $tag): FeedResult {
+    public function scrape(string $tag): FeedResult
+    {
         $uri = sprintf('/explore/tags/%s/', $tag);
         $content = $this->scraper->scrape($uri);
         $tags = $this->parse($content);
@@ -25,7 +28,8 @@ class TagScraper {
         return new FeedResult($tags);
     }
 
-    public function parse(string $content) {
+    public function parse(string $content)
+    {
         $tags = [];
         if (preg_match('/window\._sharedData\s*=\s*([^;]+)/', $content, $matches)) {
             // Find proper semicolon
@@ -42,7 +46,7 @@ class TagScraper {
             $data = json_decode($sharedData, true);
             $el = $data['entry_data']['TagPage'][0]['graphql']['hashtag']['edge_hashtag_to_media']['edges'];
 
-            $tags = array_map(function($o) {
+            $tags = array_map(function ($o) {
                 return [
                     'display_url' => $o['node']['display_url'],
                     'thumbnails' => $o['node']['thumbnail_resources'],

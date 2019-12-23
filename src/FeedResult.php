@@ -4,41 +4,55 @@ declare(strict_types=1);
 
 namespace InstagramScraper;
 
-class FeedResult {
+class FeedResult
+{
     const IMAGES = 1;
     const VIDEOS = 2;
 
     private $data;
+    private $paginator;
 
-    function __construct($data) {
+    function __construct($data, Paginator $paginator = NULL)
+    {
         $this->data = $data;
+        if ($paginator === NULL) {
+            $paginator = new Paginator();
+        }
+        $this->paginator = $paginator;
     }
 
-    public function toArray() {
+    public function toArray()
+    {
         return $this->data;
     }
 
-    public function count() {
+    public function count()
+    {
         return count($this->data);
     }
 
-    public function videos(): FeedResult {
+    public function videos(): FeedResult
+    {
         return $this->filter(FeedResult::VIDEOS);
     }
 
-    public function images(): FeedResult {
+    public function images(): FeedResult
+    {
         return $this->filter(FeedResult::IMAGES);
     }
 
-    private function videos_only($object) {
+    private function videos_only($object)
+    {
         return $object['is_video'];
     }
 
-    private function images_only($object) {
+    private function images_only($object)
+    {
         return !$object['is_video'];
     }
 
-    private function filter($type): FeedResult {
+    private function filter($type): FeedResult
+    {
         $result = [];
         if ($type === FeedResult::VIDEOS) {
             $result = array_filter($this->data, [$this, 'videos_only']);
@@ -48,5 +62,9 @@ class FeedResult {
         $result = [...$result];
 
         return new FeedResult($result);
+    }
+
+    public function page($num) {
+        return $this->paginator->page($num, $this->data);
     }
 }

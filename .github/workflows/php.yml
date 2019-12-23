@@ -13,7 +13,7 @@ jobs:
     - name: Setup PHP, with composer and extensions
       uses: shivammathur/setup-php@v1 #https://github.com/shivammathur/setup-php
       with:
-        php-version: '7.4'
+        php-version: '7.4.1'
         extensions: mbstring, simplexml, dom
         coverage: xdebug #optional
 

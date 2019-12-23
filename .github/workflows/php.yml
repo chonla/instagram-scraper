@@ -17,9 +17,6 @@ jobs:
         extensions: mbstring, simplexml, dom
         coverage: xdebug #optional
 
-    - name: Update composer
-      run: composer update
-
     - name: Validate composer.json and composer.lock
       run: composer validate
 

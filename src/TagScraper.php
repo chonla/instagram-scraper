@@ -9,7 +9,6 @@ use Chonla\InstagramScraper\Scraper;
 class TagScraper
 {
     private $scraper;
-    private $tags;
 
     function __construct(Scraper $scraper = NULL)
     {

@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-4": {
-            "InstagramScraper\\": "src/"
+            "Chonla\\InstagramScraper\\": "src/"
         }
     },
     "require-dev": {

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use InstagramScraper\Paginator;
+use Chonla\InstagramScraper\Paginator;
 
 class PaginatorTest extends TestCase
 {

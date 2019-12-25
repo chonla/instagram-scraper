@@ -2,8 +2,8 @@
 
 use PHPUnit\Framework\TestCase;
 
-use InstagramScraper\FeedResult;
-use InstagramScraper\Paginator;
+use \Chonla\InstagramScraper\FeedResult;
+use \Chonla\InstagramScraper\Paginator;
 
 class FeedResultTest extends TestCase
 {

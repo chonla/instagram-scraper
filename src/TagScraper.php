@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace InstagramScraper;
+namespace Chonla\InstagramScraper;
 
-use InstagramScraper\Scraper;
+use Chonla\InstagramScraper\Scraper;
 
 class TagScraper
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace InstagramScraper;
+namespace Chonla\InstagramScraper;
 
 class Scraper
 {

@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use InstagramScraper\Scraper;
+use Chonla\InstagramScraper\Scraper;
 
 class ScraperTest extends TestCase
 {

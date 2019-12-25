@@ -2,7 +2,7 @@
 
 require 'vendor/autoload.php';
 
-use \InstagramScraper\TagScraper;
+use Chonla\InstagramScraper\TagScraper;
 
 $scraper = new TagScraper();
 $tags = $scraper->scrape('snail');
